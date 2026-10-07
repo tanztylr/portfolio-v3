@@ -6,104 +6,113 @@ export default function Home() {
     {
       title: "The Treat Truck",
       sub: "Business Intelligence & Financial Plan",
+      deliverable: "Scope Baseline & Financial Model",
       tags: ["Financial Model", "Ops Strategy", "WBS"],
-      link: "#"
+      link: "/projects/treat-truck"
     },
     {
       title: "AuraCare Lite",
       sub: "Digital Health & Seizure Safety App",
+      deliverable: "Digital Health MVP",
       tags: ["Digital Health MVP", "PM Implementation", "UN SDG Goal 3"],
-      link: "#"
+      link: "/projects/auracare-lite"
     },
     {
       title: "The Soul Table",
       sub: "Hospitality Concept & Business Strategy",
-      tags: ["Brand Strategy", "Web Architecture"],
-      link: "#"
+      deliverable: "Brand Strategy & Architecture",
+      tags: ["Hospitality Concept", "Options Analysis", "Web Architecture"],
+      link: "/projects/soul-table"
     }
   ];
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-[#0b0f17] text-slate-100 selection:bg-slate-700">
       {/* Hero Section */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-          <div>
-            <p className="mb-4 text-sm uppercase tracking-[0.2em] text-cyan-300">
-              Product & Strategy Consultant
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Building better operations, experiences, and business models.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg text-slate-300">
-              I help ambitious teams turn complex ideas into clear strategy,
-              scalable product decisions, and measurable impact.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#work"
-                className="rounded-full bg-cyan-400 px-5 py-3 font-medium text-slate-950 transition hover:bg-cyan-300"
-              >
-                View Work
-              </Link>
-              <Link
-                href="#about"
-                className="rounded-full border border-slate-700 px-5 py-3 font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
-              >
-                Learn More
-              </Link>
-            </div>
+      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16">
+        <div>
+          {/* Status Badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/80 px-3.5 py-1 text-xs font-medium text-slate-300">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Open to PM & Operations Roles
           </div>
 
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-950/20">
-            <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Core strengths</p>
-            <div className="mt-6 space-y-4">
-              <SkillIcons />
-            </div>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl font-serif text-slate-50">
+            Turning ambiguity & messy operations into clean, usable systems.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg text-slate-400 font-sans leading-relaxed">
+            Project management, business operations, and systems thinking. I help teams cut through chaos, build reliable workflows, and execute digital products with momentum.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4 font-sans text-sm">
+            <Link
+              href="#work"
+              className="rounded-full bg-slate-100 px-6 py-2.5 font-medium text-slate-950 transition hover:bg-slate-200"
+            >
+              Selected Work
+            </Link>
+            <Link
+              href="/about"
+              className="rounded-full border border-slate-800 px-6 py-2.5 font-medium text-slate-300 transition hover:border-slate-600 hover:text-white"
+            >
+              About Approach
+            </Link>
           </div>
         </div>
       </section>
 
-      <section id="work" className="mx-auto max-w-6xl px-6 py-12">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Selected work</p>
-            <h2 className="mt-2 text-3xl font-bold">Projects</h2>
-          </div>
+      {/* Selected Work (Stacked List Rows) */}
+      <section id="work" className="mx-auto max-w-5xl px-6 py-16">
+        <div className="mb-6 border-b border-slate-800/80 pb-4">
+          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-mono">Case Studies</p>
+          <h2 className="mt-1 text-2xl font-serif font-semibold text-slate-100">Featured Projects</h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="divide-y divide-slate-800/60 border-y border-slate-800/60">
           {projects.map((project) => (
-            <article key={project.title} className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Case study</p>
-              <h3 className="mt-4 text-2xl font-semibold">{project.title}</h3>
-              <p className="mt-3 text-slate-300">{project.sub}</p>
+            <Link
+              key={project.title}
+              href={project.link}
+              className="group block py-7 transition hover:bg-slate-900/40 px-2"
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                <div>
+                  <h3 className="text-xl font-medium text-slate-100 group-hover:text-white transition">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 mt-0.5">{project.sub}</p>
+                </div>
+                <span className="text-xs font-mono text-slate-400 border border-slate-800 rounded px-2.5 py-1 w-fit mt-2 sm:mt-0">
+                  {project.deliverable}
+                </span>
+              </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="rounded-full border border-slate-700 px-2.5 py-1 text-xs text-slate-200">
+                  <span
+                    key={tag}
+                    className="rounded-full bg-slate-900 border border-slate-800/80 px-2.5 py-0.5 text-xs text-slate-400"
+                  >
                     {tag}
                   </span>
                 ))}
               </div>
-
-              <Link href={project.link} className="mt-6 inline-block text-cyan-300 hover:text-cyan-200">
-                Read more →
-              </Link>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-8 md:grid-cols-2">
+      {/* Core Skills Strip */}
+      <section className="mx-auto max-w-5xl px-6 py-16 border-t border-slate-800/60">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">About</p>
-            <h2 className="mt-2 text-3xl font-bold">Strategy with execution in mind.</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-mono">Toolkit</p>
+            <h2 className="mt-1 text-xl font-serif font-medium text-slate-100">Systems & Technologies</h2>
           </div>
-          <p className="text-lg text-slate-300">
-            I blend business strategy, product thinking, and operational planning to help teams move from concept to delivery with clarity and momentum.
-          </p>
+          <div>
+            <SkillIcons />
+          </div>
         </div>
       </section>
     </main>
