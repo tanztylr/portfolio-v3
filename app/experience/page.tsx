@@ -94,12 +94,12 @@ export default function ExperiencePage() {
         <div className="mt-6">
           <a
             href="/resume.pdf"
+            download="Tanza_Taylor_Resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/60 px-5 py-2.5 text-xs font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
           >
-            <span>Download My Resume</span>
-            <span aria-hidden="true">↓</span>
+            Download My Resume ↓
           </a>
         </div>
       </header>

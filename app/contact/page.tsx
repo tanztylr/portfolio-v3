@@ -39,7 +39,7 @@ export default function ContactPage() {
           Let's Connect
         </h1>
         <p className="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl font-light leading-relaxed">
-          Whether you have an ambiguous initiative that needs structure, an operational workflow ready to scale, or an open role in project management and operations—let's talk.
+          Whether you have an ambiguous initiative that needs structure, an operational workflow ready to scale, or an open role in project management and operations, let's talk.
         </p>
       </header>
 
@@ -56,7 +56,7 @@ export default function ContactPage() {
               tanzaneya.taylor1@gmail.com
             </a>
             <p className="mt-2 text-xs text-slate-400 font-light">
-              Fastest response for contract, advisory, and full-time inquiries.
+              Fastest response and full-time inquiries.
             </p>
           </div>
 
