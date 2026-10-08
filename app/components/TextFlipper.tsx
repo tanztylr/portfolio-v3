@@ -1,30 +1,28 @@
 'use client';
+
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
-const phases = [
-  "“WHAT IF?”",
-  "“LET’S PLAN IT.”",
-  "“IT’S LIVE.”"
-];
+interface TextFlipperProps {
+  words: string[];
+  interval?: number;
+}
 
-export default function TextFlipper() {
+export default function TextFlipper({ words, interval = 3000 }: TextFlipperProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (words.length <= 1) return;
+
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % phases.length);
-    }, 2200);
+      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, interval);
+
     return () => clearInterval(timer);
-  }, []);
+  }, [words, interval]);
 
   return (
-    
-      
-        
-          {phases[index]}
-        
-      
-    
+    <span className="inline-block transition-opacity duration-300">
+      {words[index]}
+    </span>
   );
 }
