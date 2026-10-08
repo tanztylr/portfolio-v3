@@ -81,35 +81,38 @@ export default function HomePage() {
 
         <div className="divide-y divide-slate-800/60">
           {FEATURED_PROJECTS.map((project) => (
-            <Link
-              key={project.title}
-              href={project.href}
-              className="group block py-10 transition duration-150 hover:pl-2"
-            >
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                <h3 className="font-serif text-2xl sm:text-3xl text-slate-100 font-normal tracking-tight group-hover:text-emerald-400 transition-colors">
-                  {project.title}
-                </h3>
-                <span className="text-xs text-slate-400 font-medium">
-                  {project.role}
-                </span>
-              </div>
+            <div key={project.title} className="relative py-10">
+              {/* PRIMARY TEXT LINK WITH INDEPENDENT KINETIC HOVER */}
+              <Link href={project.href} className="group block focus:outline-none">
+                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                  <h3 className="inline-flex items-center gap-2 font-serif text-2xl sm:text-3xl text-slate-100 font-normal tracking-tight transition-transform duration-200 ease-out group-hover:translate-x-2 group-hover:text-white">
+                    <span>{project.title}</span>
+                    <span className="opacity-0 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:translate-x-1 text-slate-400 font-sans text-xl">
+                      →
+                    </span>
+                  </h3>
+                  <span className="text-xs text-slate-400 font-medium transition-colors duration-200 group-hover:text-slate-200">
+                    {project.role}
+                  </span>
+                </div>
 
-              <p className="mt-3 max-w-3xl text-sm sm:text-base text-slate-400 leading-relaxed">
-                {project.subtitle}
-              </p>
+                <p className="mt-3 max-w-3xl text-sm sm:text-base text-slate-400 leading-relaxed font-light transition-colors duration-200 group-hover:text-slate-300">
+                  {project.subtitle}
+                </p>
+              </Link>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              {/* INDIVIDUAL ELEVATING INTERACTIVE PILLS */}
+              <div className="mt-5 flex flex-wrap gap-2.5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-md border border-slate-800 bg-slate-900/40 px-3 py-1 text-xs text-slate-300 font-medium"
+                    className="inline-block cursor-default select-none rounded-md border border-slate-800 bg-slate-900/40 px-3 py-1 text-xs text-slate-400 font-medium transition-all duration-200 ease-out hover:-translate-y-1 hover:scale-105 hover:border-slate-600 hover:bg-slate-800 hover:text-slate-100 hover:shadow-lg hover:shadow-slate-900/50"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>

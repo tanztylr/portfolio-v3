@@ -29,12 +29,13 @@ export default function BeyondPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-16 lg:py-24 space-y-20">
       {/* HEADER */}
+      {/* HEADER */}
       <header className="border-b border-slate-800/80 pb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-slate-400 font-medium">
-          Personal Life &amp; Perspectives
+          Personal Archive &amp; Field Notes
         </span>
         <h1 className="mt-3 font-serif text-4xl sm:text-5xl text-slate-100 font-semibold tracking-tight">
-          A Little Bit About Me
+          Beyond the Desk
         </h1>
         <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl font-light leading-relaxed">
           Outside of organizing project workflows and refining digital systems, here is what keeps me curious, grounded, and building.
