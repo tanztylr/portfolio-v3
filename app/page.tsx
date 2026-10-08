@@ -1,98 +1,109 @@
 import Link from 'next/link';
-import SkillIcons from './components/SkillIcons';
 
-export default function Home() {
-  const projects = [
-    {
-      title: "The Treat Truck",
-      sub: "Business Intelligence & Financial Plan",
-      deliverable: "Scope Baseline & Financial Model",
-      tags: ["Financial Model", "Ops Strategy", "WBS"],
-      link: "/projects/treat-truck"
-    },
-    {
-      title: "AuraCare Lite",
-      sub: "Digital Health & Seizure Safety App",
-      deliverable: "Digital Health MVP",
-      tags: ["Digital Health MVP", "PM Implementation", "UN SDG Goal 3"],
-      link: "/projects/auracare-lite"
-    },
-    {
-      title: "The Soul Table",
-      sub: "Hospitality Concept & Business Strategy",
-      deliverable: "Brand Strategy & Architecture",
-      tags: ["Hospitality Concept", "Options Analysis", "Web Architecture"],
-      link: "/projects/soul-table"
-    }
-  ];
+const FEATURED_PROJECTS = [
+  {
+    title: 'The Treat Truck',
+    subtitle: 'Mobile Retail Feasibility Study, Scope Baseline & 3-Year Pro Forma',
+    role: 'Project Manager & Financial Analyst',
+    tags: ['Scope Baseline', 'Financial Model', 'WBS Dictionary'],
+    href: '/projects/treat-truck',
+  },
+  {
+    title: 'AuraCare Lite',
+    subtitle: 'Mobile Emergency Response System & Seizure Safety Initiative',
+    role: 'Product & Project Lead',
+    tags: ['Digital Health MVP', 'Agile PM', 'UN SDG Goal 3'],
+    href: '/projects/auracare-lite',
+  },
+  {
+    title: 'The Soul Table',
+    subtitle: 'Digital Infrastructure Strategy, Pop-Up Booking & Experience Design',
+    role: 'Systems Architect & Project Coordinator',
+    tags: ['Options Analysis', 'Web Information Architecture', 'Brand Governance'],
+    href: '/projects/soul-table',
+  },
+];
 
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#0b0f17] text-slate-100 selection:bg-slate-700">
-      {/* Hero Section */}
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16">
-        <div>
-          {/* Status Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/80 px-3.5 py-1 text-xs font-medium text-slate-300">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Open to PM & Operations Roles
-          </div>
+    <main className="mx-auto max-w-5xl px-6 py-16 lg:py-24">
+      {/* HERO SECTION */}
+      <section className="border-b border-slate-800/60 pb-16">
+        {/* Live Status Badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Open to PM & Operations Roles
+        </div>
 
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl font-serif text-slate-50">
-            Turning ambiguity & messy operations into clean, usable systems.
-          </h1>
+        <h1 className="mt-8 font-serif text-4xl sm:text-6xl text-slate-100 font-semibold tracking-tight leading-[1.1]">
+          Tanza Taylor
+        </h1>
+        <p className="mt-3 text-lg sm:text-xl text-slate-400 font-normal tracking-wide">
+          Operations Strategy · Project Management · Digital Systems
+        </p>
 
-          <p className="mt-6 max-w-2xl text-lg text-slate-400 font-sans leading-relaxed">
-            Project management, business operations, and systems thinking. I help teams cut through chaos, build reliable workflows, and execute digital products with momentum.
+        <div className="mt-8 max-w-2xl space-y-4">
+          <p className="font-serif text-2xl sm:text-3xl text-slate-200 font-normal leading-snug">
+            I build structure out of chaos so teams can move faster.
           </p>
+          <p className="text-base text-slate-400 leading-relaxed font-light">
+            Driven by curiosity and a hands-on mindset, I design practical workflows, manage end-to-end projects, and deliver clean results.
+          </p>
+        </div>
 
-          <div className="mt-8 flex flex-wrap gap-4 font-sans text-sm">
-            <Link
-              href="#work"
-              className="rounded-full bg-slate-100 px-6 py-2.5 font-medium text-slate-950 transition hover:bg-slate-200"
-            >
-              Selected Work
-            </Link>
-            <Link
-              href="/about"
-              className="rounded-full border border-slate-800 px-6 py-2.5 font-medium text-slate-300 transition hover:border-slate-600 hover:text-white"
-            >
-              About Approach
-            </Link>
-          </div>
+        {/* Primary CTAs */}
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href="#work"
+            className="rounded-xl bg-slate-100 px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-white hover:shadow-lg"
+          >
+            See Projects
+          </a>
+          <Link
+            href="/contact"
+            className="rounded-xl border border-slate-700/80 bg-slate-900/60 px-6 py-3 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
+          >
+            Let&apos;s Connect
+          </Link>
         </div>
       </section>
 
-      {/* Selected Work (Stacked List Rows) */}
-      <section id="work" className="mx-auto max-w-5xl px-6 py-16">
-        <div className="mb-6 border-b border-slate-800/80 pb-4">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-mono">Case Studies</p>
-          <h2 className="mt-1 text-2xl font-serif font-semibold text-slate-100">Featured Projects</h2>
+      {/* FEATURED PROJECTS (UNBOXED EDITORIAL LIST) */}
+      <section id="work" className="pt-20 pb-12">
+        <div className="flex items-baseline justify-between border-b border-slate-800/80 pb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl text-slate-100 font-medium tracking-tight">
+            Selected Work
+          </h2>
+          <span className="text-xs uppercase tracking-widest text-slate-400">
+            Case Studies
+          </span>
         </div>
 
-        <div className="divide-y divide-slate-800/60 border-y border-slate-800/60">
-          {projects.map((project) => (
+        <div className="divide-y divide-slate-800/60">
+          {FEATURED_PROJECTS.map((project) => (
             <Link
               key={project.title}
-              href={project.link}
-              className="group block py-7 transition hover:bg-slate-900/40 px-2"
+              href={project.href}
+              className="group block py-10 transition duration-150 hover:pl-2"
             >
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-                <div>
-                  <h3 className="text-xl font-medium text-slate-100 group-hover:text-white transition">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-slate-400 mt-0.5">{project.sub}</p>
-                </div>
-                <span className="text-xs font-mono text-slate-400 border border-slate-800 rounded px-2.5 py-1 w-fit mt-2 sm:mt-0">
-                  {project.deliverable}
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
+                <h3 className="font-serif text-2xl sm:text-3xl text-slate-100 font-normal tracking-tight group-hover:text-emerald-400 transition-colors">
+                  {project.title}
+                </h3>
+                <span className="text-xs text-slate-400 font-medium">
+                  {project.role}
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
+              <p className="mt-3 max-w-3xl text-sm sm:text-base text-slate-400 leading-relaxed">
+                {project.subtitle}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-slate-900 border border-slate-800/80 px-2.5 py-0.5 text-xs text-slate-400"
+                    className="rounded-md border border-slate-800 bg-slate-900/40 px-3 py-1 text-xs text-slate-300 font-medium"
                   >
                     {tag}
                   </span>
@@ -100,19 +111,6 @@ export default function Home() {
               </div>
             </Link>
           ))}
-        </div>
-      </section>
-
-      {/* Core Skills Strip */}
-      <section className="mx-auto max-w-5xl px-6 py-16 border-t border-slate-800/60">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-400 font-mono">Toolkit</p>
-            <h2 className="mt-1 text-xl font-serif font-medium text-slate-100">Systems & Technologies</h2>
-          </div>
-          <div>
-            <SkillIcons />
-          </div>
         </div>
       </section>
     </main>

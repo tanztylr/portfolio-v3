@@ -1,184 +1,193 @@
 'use client';
 
-import { useState } from 'react';
+import './globals.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import './globals.css';
+import { useState } from 'react';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const NAV_ITEMS = [
+  { label: 'Home', href: '/', icon: 'Home' },
+  { label: 'About', href: '/about', icon: 'User' },
+  { label: 'Projects', href: '/#work', icon: 'Folder' },
+  { label: 'Experience', href: '/experience', icon: 'Briefcase' },
+  { label: 'Beyond', href: '/beyond', icon: 'Sparkles' },
+  { label: 'Contact', href: '/contact', icon: 'Mail' },
+];
+
+function NavIcon({ name, className }: { name: string; className?: string }) {
+  if (name === 'Home') {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+    );
+  }
+  if (name === 'User') {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+      </svg>
+    );
+  }
+  if (name === 'Folder') {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      </svg>
+    );
+  }
+  if (name === 'Briefcase') {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    );
+  }
+  if (name === 'Sparkles') {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+    </svg>
+  );
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
-  const navItems = [
-    {
-      name: 'Home',
-      href: '/',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      )
-    },
-    {
-      name: 'About',
-      href: '/about',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-      )
-    },
-    {
-      name: 'Projects',
-      href: '/#work',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      name: 'Experience',
-      href: '/experience',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
-    },
-    {
-      name: 'Beyond',
-      href: '/beyond',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      )
-    },
-    {
-      name: 'Contact',
-      href: '/contact',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-  ];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-[#0b0f17] text-slate-100 flex flex-col font-sans selection:bg-slate-700">
+    <html lang="en" className="scroll-smooth bg-[#0b0f17]">
+      <body className="min-h-screen bg-[#0b0f17] text-slate-200 antialiased selection:bg-slate-700 selection:text-white">
         
-        {/* DESKTOP FLOATING SQUIRCLE DOCK (Distinct Geometric Aesthetic) */}
-        <aside className="hidden lg:flex fixed left-5 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-3 p-2 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl shadow-2xl shadow-black/80">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`group relative flex h-11 w-11 items-center justify-center rounded-2xl transition-all duration-200 ${
-                  isActive
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-lg shadow-emerald-500/10'
-                    : 'bg-slate-950/70 border border-slate-800/80 text-slate-400 hover:text-slate-100 hover:border-slate-700 hover:bg-slate-800/80'
-                }`}
-              >
-                {item.icon}
+        {/* DESKTOP FLOATING SQUIRCLE DOCK */}
+        <nav
+          aria-label="Desktop Navigation"
+          className="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border border-slate-800/80 bg-slate-950/70 p-2 backdrop-blur-xl shadow-2xl lg:flex"
+        >
+          {NAV_ITEMS.map((item) => {
+            const isActive =
+              item.href === '/'
+                ? pathname === '/'
+                : item.href.startsWith('/#')
+                ? pathname === '/'
+                : pathname?.startsWith(item.href);
 
-                {/* Minimalist fly-out label */}
-                <span className="pointer-events-none absolute left-14 hidden whitespace-nowrap rounded-xl bg-slate-900 border border-slate-800 px-3 py-1.5 text-xs font-mono tracking-wide text-slate-200 opacity-0 shadow-2xl transition-all duration-150 group-hover:block group-hover:opacity-100">
-                  {item.name}
+            return (
+              <div key={item.label} className="group relative flex items-center">
+                <Link
+                  href={item.href}
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 ${
+                    isActive
+                      ? 'border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 shadow-sm shadow-emerald-500/20'
+                      : 'text-slate-400 hover:border hover:border-slate-700 hover:bg-slate-900/60 hover:text-slate-100'
+                  }`}
+                  aria-label={item.label}
+                >
+                  <NavIcon name={item.icon} className="h-5 w-5" />
+                </Link>
+
+                {/* Hover Tooltip Pill */}
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute left-14 whitespace-nowrap rounded-lg border border-slate-800 bg-slate-900/95 px-3 py-1 text-xs font-medium text-slate-200 opacity-0 shadow-lg backdrop-blur-md transition-all duration-150 group-hover:translate-x-1 group-hover:opacity-100"
+                >
+                  {item.label}
                 </span>
-              </Link>
+              </div>
             );
           })}
-        </aside>
+        </nav>
 
         {/* MOBILE TOP BAR */}
-        <header className="lg:hidden fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-4 bg-[#0b0f17]/90 backdrop-blur-md border-b border-slate-800/80">
-          <Link href="/" className="font-serif text-lg font-semibold tracking-tight text-slate-100">
+        <header className="sticky top-0 z-40 flex items-center justify-between border-b border-slate-800/60 bg-[#0b0f17]/90 px-6 py-4 backdrop-blur-md lg:hidden">
+          <Link href="/" className="font-serif text-base font-medium tracking-tight text-slate-100">
             Tanza Taylor
           </Link>
           <button
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Toggle menu"
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-200 hover:bg-slate-800 transition"
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 transition hover:text-white"
+            aria-label="Toggle navigation menu"
           >
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {mobileMenuOpen ? (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
           </button>
         </header>
 
-        {/* MOBILE OVERLAY */}
+        {/* MOBILE SLIDE-OUT DRAWER */}
         {mobileMenuOpen && (
-          <div
-            onClick={() => setMobileMenuOpen(false)}
-            className="lg:hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
-          />
+          <div className="fixed inset-0 z-50 flex lg:hidden">
+            <div
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <div className="relative ml-auto flex h-full w-3/4 max-w-xs flex-col border-l border-slate-800 bg-[#0b0f17] p-6 shadow-2xl">
+              <div className="flex items-center justify-between pb-6 border-b border-slate-800/60">
+                <span className="font-serif text-sm font-semibold text-slate-200">Navigation</span>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-lg p-1 text-slate-400 hover:text-white"
+                  aria-label="Close menu"
+                >
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-2">
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition hover:bg-slate-800/50 hover:text-white"
+                  >
+                    <NavIcon name={item.icon} className="h-5 w-5 text-slate-400" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         )}
 
-        {/* MOBILE SLIDE-OUT DRAWER */}
-        <div
-          className={`lg:hidden fixed top-0 right-0 z-50 h-full w-[280px] bg-[#0b0f17] border-l border-slate-800 p-6 shadow-2xl transition-transform duration-300 ease-in-out ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          <div className="flex items-center justify-between pb-6 border-b border-slate-800/80">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400">Menu</span>
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close menu"
-              className="flex h-8 w-8 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:text-white"
-            >
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <nav className="mt-6 flex flex-col gap-2">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium transition ${
-                    isActive
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                      : 'bg-slate-900/60 border border-slate-800/80 text-slate-300 hover:bg-slate-800'
-                  }`}
-                >
-                  <span>{item.icon}</span>
-                  <span>{item.name}</span>
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-
-        {/* Content with padding for desktop dock & mobile header */}
-        <div className="flex-1 pt-14 lg:pt-0 lg:pl-16">
+        {/* MAIN PAGE VIEW */}
+        <div className="lg:pl-20 min-h-[calc(100vh-80px)]">
           {children}
         </div>
 
-        {/* Global Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#0b0f17] py-8 text-xs font-mono text-slate-500 lg:pl-16">
+        {/* GLOBAL EXECUTIVE FOOTER */}
+        <footer className="border-t border-slate-800/60 bg-[#0b0f17] py-10 text-xs text-slate-400 lg:pl-20">
           <div className="mx-auto flex max-w-5xl flex-col sm:flex-row items-center justify-between gap-4 px-6">
-            <p>© {new Date().getFullYear()} Tanza Taylor. Built with Next.js & Tailwind CSS.</p>
-            <div className="flex gap-4">
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="transition hover:text-slate-200">GitHub</a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="transition hover:text-slate-200">LinkedIn</a>
+            <p>© {new Date().getFullYear()} Tanza Taylor. Operations Strategy & Project Management.</p>
+            <div className="flex gap-6 font-medium">
+              <a href="https://github.com/tanztylr" target="_blank" rel="noreferrer" className="hover:text-slate-100 transition">
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/tanzaneya-taylor" target="_blank" rel="noreferrer" className="hover:text-slate-100 transition">
+                LinkedIn
+              </a>
+              <a href="mailto:tanzaneya.taylor1@gmail.com" className="hover:text-slate-100 transition">
+                Email
+              </a>
             </div>
           </div>
         </footer>
+
       </body>
     </html>
   );
