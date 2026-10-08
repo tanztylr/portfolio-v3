@@ -3,12 +3,12 @@
 import './globals.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/', icon: 'Home' },
   { label: 'About', href: '/about', icon: 'User' },
-  { label: 'Projects', href: '/#work', icon: 'Folder' },
+  { label: 'Projects', href: '/projects', icon: 'Folder' },
   { label: 'Experience', href: '/experience', icon: 'Briefcase' },
   { label: 'Beyond', href: '/beyond', icon: 'Sparkles' },
   { label: 'Contact', href: '/contact', icon: 'Mail' },
@@ -60,7 +60,14 @@ function NavIcon({ name, className }: { name: string; className?: string }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const [currentHash, setCurrentHash] = useState('');
 
+  useEffect(() => {
+    const updateHash = () => setCurrentHash(window.location.hash);
+    updateHash();
+    window.addEventListener('hashchange', updateHash);
+    return () => window.removeEventListener('hashchange', updateHash);
+  }, []);
   return (
     <html lang="en" className="scroll-smooth bg-[#0b0f17]">
       <body className="min-h-screen bg-[#0b0f17] text-slate-200 antialiased selection:bg-slate-700 selection:text-white">
@@ -72,11 +79,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
-              item.href === '/'
-                ? pathname === '/'
-                : item.href.startsWith('/#')
-                ? pathname === '/'
-                : pathname?.startsWith(item.href);
+          item.href === '/#work'
+            ? pathname === '/' && currentHash === '#work'
+            : item.href === '/'
+            ? pathname === '/' && !currentHash
+            : pathname === item.href;
 
             return (
               <div key={item.label} className="group relative flex items-center">
