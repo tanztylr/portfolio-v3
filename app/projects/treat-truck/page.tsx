@@ -42,11 +42,47 @@ export default function TreatTruckPage() {
         </section>
 
         {/* CONTENT SECTIONS */}
-        <div className="py-10 space-y-12">
-          <section>
-            <h2 className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-3">
-              Operational Context
-            </h2>
+      <div className="py-10 space-y-12">
+        
+        {/* INTERACTIVE WORKSTREAM & BLUEPRINT PREVIEW */}
+        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
+              System Architecture Diagram
+            </span>
+            <span className="text-[10px] font-mono text-slate-500">
+              Artifact: 35-Page Project Charter &amp; WBS
+            </span>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs pt-1">
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1 text-center">
+              <span className="text-lg">📜</span>
+              <p className="font-semibold text-slate-200">Phase 1</p>
+              <p className="text-[11px] text-slate-400 font-light">Municipal Permitting &amp; Health</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1 text-center">
+              <span className="text-lg">🛠️</span>
+              <p className="font-semibold text-slate-200">Phase 2</p>
+              <p className="text-[11px] text-slate-400 font-light">Vehicle Retrofit &amp; Buildout</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1 text-center">
+              <span className="text-lg">📊</span>
+              <p className="font-semibold text-slate-200">Phase 3</p>
+              <p className="text-[11px] text-slate-400 font-light">Unit Costing &amp; COGS Models</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3.5 space-y-1 text-center">
+              <span className="text-lg">🚀</span>
+              <p className="font-semibold text-slate-200">Phase 4</p>
+              <p className="text-[11px] text-slate-400 font-light">Launch &amp; Floor Execution</p>
+            </div>
+          </div>
+        </div>
+
+        <section>
+          <h2 className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-3">
+            Operational Context
+          </h2>
             <p className="text-slate-300 leading-relaxed font-light">
               Launching a mobile retail venture requires orchestrating interdependent work streams under rigid municipal compliance guidelines. The objective was to design a comprehensive project management architecture—transforming an ambiguous retail launch into an operational roadmap with clear accountability and schedule controls.
             </p>
