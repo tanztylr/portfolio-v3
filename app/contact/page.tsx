@@ -98,7 +98,7 @@ export default function ContactPage() {
                 </div>
                 <div className="max-w-md rounded-2xl rounded-tl-sm bg-slate-900 border border-slate-800 p-4 text-xs text-slate-200 leading-relaxed shadow-lg font-light">
                   <p>
-                    Hey! Thanks for stopping by my portfolio. Whether you need an operations lead to eliminate workflow bottlenecks, want to talk systems architecture, or have an open role, drop me a note below.
+                    Hey! Thanks for stopping by. If you want to talk operations, discuss an open role, or just connect on systems architecture, send me a message here.
                   </p>
                 </div>
               </div>
