@@ -194,18 +194,34 @@ const [currentHash, setCurrentHash] = useState('');
         </div>
 
         {/* GLOBAL EXECUTIVE FOOTER */}
-        <footer className="border-t border-slate-800/60 bg-[#0b0f17] py-10 text-xs text-slate-400 lg:pl-20">
+        <footer className="border-t border-slate-800/60 bg-[#0b0f17] py-8 text-xs text-slate-400 lg:pl-20">
           <div className="mx-auto flex max-w-5xl flex-col sm:flex-row items-center justify-between gap-4 px-6">
-            <p>© {new Date().getFullYear()} Tanza Taylor. Operations Strategy & Project Management.</p>
-            <div className="flex gap-6 font-medium">
-              <a href="https://github.com/tanztylr" target="_blank" rel="noreferrer" className="hover:text-slate-100 transition">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <p>© {new Date().getFullYear()} Tanza Taylor · Operations Strategy &amp; Project Management</p>
+            </div>
+            <div className="flex gap-6 font-mono text-[11px]">
+              <a
+                href="https://github.com/tanztylr"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-100 transition"
+              >
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/tanzaneya-taylor" target="_blank" rel="noreferrer" className="hover:text-slate-100 transition">
+              <a
+                href="https://www.linkedin.com/in/tanzaneya-taylor"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-100 transition"
+              >
                 LinkedIn
               </a>
-              <a href="mailto:tanzaneya.taylor1@gmail.com" className="hover:text-slate-100 transition">
-                Email
+              <a
+                href="mailto:tanztylr@gmail.com"
+                className="hover:text-slate-100 transition text-slate-300"
+              >
+                tanztylr@gmail.com
               </a>
             </div>
           </div>
