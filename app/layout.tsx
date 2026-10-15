@@ -189,7 +189,7 @@ const [currentHash, setCurrentHash] = useState('');
         )}
 
         {/* MAIN PAGE VIEW */}
-        <div className="lg:pl-20 min-h-[calc(100vh-80px)]">
+        <div className="lg:pl-20 pt-24 pb-16 min-h-screen">
           {children}
         </div>
 
