@@ -18,12 +18,14 @@ export default function ContactPage() {
         body: formData,
       });
 
-      if (res.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-      }
+      const result = await res.json();
+
+if (res.ok && result.success) {
+  setStatus('success');
+  form.reset();
+} else {
+  setStatus('error');
+}
     } catch {
       setStatus('error');
     }
@@ -105,6 +107,7 @@ export default function ContactPage() {
         <div className="lg:col-span-7 rounded-2xl border border-slate-800/80 bg-slate-900/30 p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <input type="hidden" name="to_email" value="tanzaneya.taylor1@gmail.com" />
+            <input type="hidden" name="access_key" value="6695798a-b092-44db-a88a-b1ba3a3e06b2" />
 
             <div>
               <label htmlFor="name" className="block text-xs uppercase tracking-wider text-slate-400 font-medium mb-2">

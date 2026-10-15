@@ -217,7 +217,7 @@ export default function AboutPage() {
           </p>
         </div>
         <Link
-          href="/#work"
+          href="/projects"
           className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-slate-100 px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-white hover:shadow-lg"
         >
           Explore Featured Work →

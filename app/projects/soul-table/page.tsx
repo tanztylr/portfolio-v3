@@ -4,7 +4,7 @@ export default function SoulTablePage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-12 lg:py-20 text-slate-200">
       <Link
-        href="/#work"
+        href="/projects"
         className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition mb-8"
       >
         ← Back to Projects
