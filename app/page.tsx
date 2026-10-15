@@ -140,6 +140,71 @@ export default function HomePage() {
         </div>
 
       </div>
+
+      {/* ROW 3: SKILLS STACK & MUSIC WIDGET */}
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-12 gap-5">
+        
+        {/* WIDGET: TANGIBLE SKILLS (Spans 8 cols) */}
+        <div className="md:col-span-8 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 shadow-xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between border-b border-slate-800/60 pb-3 mb-4">
+              <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Execution Stack</span>
+              <span className="text-xs font-mono text-emerald-400">Core Tools</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-4 space-y-1.5">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">PM &amp; Ops</span>
+                <p className="font-medium text-slate-200">Work Breakdown Structures</p>
+                <p className="text-[11px] text-slate-400 font-light">Critical path scheduling &amp; scope baselines</p>
+              </div>
+              <div className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-4 space-y-1.5">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Finance &amp; Modeling</span>
+                <p className="font-medium text-slate-200">Unit Costing Models</p>
+                <p className="text-[11px] text-slate-400 font-light">Dynamic spreadsheets &amp; break-even analysis</p>
+              </div>
+              <div className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-4 space-y-1.5">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Engineering</span>
+                <p className="font-medium text-slate-200">Next.js &amp; Tailwind</p>
+                <p className="text-[11px] text-slate-400 font-light">Frontend web architecture &amp; GitHub workflows</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 pt-3 border-t border-slate-800/40 flex items-center justify-between text-[11px] text-slate-500">
+            <span>Also fluent in: Figma, Notion, Asana, Google Suite</span>
+            <Link href="/about" className="text-slate-400 hover:text-white transition">Read Philosophy →</Link>
+          </div>
+        </div>
+
+        {/* WIDGET: OFF THE CLOCK / MUSIC (Spans 4 cols) */}
+        <div className="md:col-span-4 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 shadow-xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between border-b border-slate-800/60 pb-3 mb-4">
+              <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Off The Clock</span>
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-800/60 bg-slate-950/50 p-3">
+                <span className="text-xl">🧱</span>
+                <div className="text-xs">
+                  <p className="font-medium text-slate-200">LEGO Master Builds</p>
+                  <p className="text-[11px] text-slate-400 font-light">Complex structure assembly</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-800/60 bg-slate-950/50 p-3">
+                <span className="text-xl">🎧</span>
+                <div className="text-xs">
+                  <p className="font-medium text-slate-200">Deep Work Soundtrack</p>
+                  <p className="text-[11px] text-slate-400 font-light">Instrumental &amp; ambient loops</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 pt-3 border-t border-slate-800/40 text-[11px] text-slate-500 text-center font-mono">
+            Always building something
+          </div>
+        </div>
+
+      </div>
     </main>
   );
 }
