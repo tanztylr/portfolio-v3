@@ -39,17 +39,17 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* CARD 2: PHOTO WIDGET (Spans 3 cols on desktop) */}
-        <div className="md:col-span-3 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-xl">
-          <div className="relative aspect-[4/5] w-full rounded-2xl border border-slate-800 bg-slate-950/60 flex flex-col items-center justify-center text-center p-6">
-            <div className="h-16 w-16 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-300 font-serif text-2xl mb-3 shadow-inner">
+        {/* CARD 2: PHOTO WIDGET */}
+        <div className="group md:col-span-3 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-xl transition-all duration-300 hover:border-slate-700">
+          <div className="relative aspect-[4/5] w-full rounded-2xl border border-slate-800/90 bg-slate-950/80 flex flex-col items-center justify-center text-center p-6 transition-transform duration-300 group-hover:scale-[1.02]">
+            <div className="h-16 w-16 rounded-full border border-slate-700 bg-slate-800/80 flex items-center justify-center text-slate-200 font-serif text-2xl mb-3 shadow-inner">
               TT
             </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-slate-400 font-medium">
+            <span className="text-xs font-mono uppercase tracking-widest text-slate-300 font-medium">
               Tanza Taylor
             </span>
-            <span className="text-[11px] text-slate-500 mt-1">
-              Photo Anchor
+            <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/90 px-2.5 py-0.5 text-[10px] font-mono text-slate-400">
+              Atlanta, GA
             </span>
           </div>
         </div>
