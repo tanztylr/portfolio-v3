@@ -60,11 +60,11 @@ const PROJECTS: ProjectApp[] = [
 
 export default function ProjectsPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8 lg:py-12">
+    <main className="mx-auto max-w-5xl px-4 py-4">
       <MacWindow title="Launchpad — System Modules">
         <div className="p-2 sm:p-6 space-y-8">
           
-          {/* TOP APP HEADER */}
+          {/* HEADER */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
@@ -94,7 +94,6 @@ export default function ProjectsPage() {
                 className="group relative flex flex-col justify-between rounded-3xl border border-slate-800/90 bg-slate-950/60 p-6 shadow-xl transition-all duration-300 hover:border-slate-600 hover:bg-slate-900/50 hover:shadow-2xl hover:translate-y-[-4px]"
               >
                 <div>
-                  {/* APP SQUIRCLE ICON */}
                   <div className="flex items-center justify-between">
                     <div
                       className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${project.iconBg} p-0.5 shadow-lg flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-105`}
@@ -107,7 +106,6 @@ export default function ProjectsPage() {
                     </span>
                   </div>
 
-                  {/* TITLE & META */}
                   <div className="mt-5">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">
                       {project.domain}
@@ -120,13 +118,11 @@ export default function ProjectsPage() {
                     </p>
                   </div>
 
-                  {/* DESCRIPTION */}
                   <p className="text-xs text-slate-300 leading-relaxed font-light mt-4">
                     {project.description}
                   </p>
                 </div>
 
-                {/* TAGS & LAUNCH BUTTON */}
                 <div className="mt-6 pt-4 border-t border-slate-800/60 space-y-4">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
