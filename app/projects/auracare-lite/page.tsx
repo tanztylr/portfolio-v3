@@ -44,6 +44,37 @@ export default function AuraCarePage() {
 
       {/* CONTENT SECTIONS */}
       <div className="py-10 space-y-12">
+        
+        {/* INTERACTIVE EMERGENCY TRIAGE ARCHITECTURE */}
+        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400">
+              Low-Friction Safety Architecture
+            </span>
+            <span className="text-[10px] font-mono text-slate-500">
+              Standard: UN SDG Goal 3 Compliance
+            </span>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5 text-center">
+              <span className="text-xl">⚡</span>
+              <p className="font-semibold text-slate-200">Safety Net Trigger</p>
+              <p className="text-[11px] text-slate-400 font-light">1-tap automated alert broadcast with GPS pin</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5 text-center">
+              <span className="text-xl">⏱️</span>
+              <p className="font-semibold text-slate-200">Aura Quick Log</p>
+              <p className="text-[11px] text-slate-400 font-light">Zero-text sensory tagging under 3 seconds</p>
+            </div>
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5 text-center">
+              <span className="text-xl">📋</span>
+              <p className="font-semibold text-slate-200">Bystander Protocol</p>
+              <p className="text-[11px] text-slate-400 font-light">High-contrast visual first aid guidelines</p>
+            </div>
+          </div>
+        </div>
+
         <section>
           <h2 className="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-3">
             Overview
