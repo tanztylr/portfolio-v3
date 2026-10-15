@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import MacWindow from '../../components/MacWindow';
 
-export default function AuraCareLitePage() {
+export default function AuraCarePage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-12 lg:py-20 text-slate-200">
       <Link
@@ -9,6 +10,8 @@ export default function AuraCareLitePage() {
       >
         ← Back to Projects
       </Link>
+
+      <MacWindow title="Safari — AuraCare Lite Product & PM Package">
 
       {/* HEADER */}
       <header className="border-b border-slate-800/80 pb-8">
@@ -118,6 +121,7 @@ export default function AuraCareLitePage() {
           </p>
         </section>
       </div>
+      </MacWindow>
     </main>
   );
 }

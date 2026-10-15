@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MacWindow from '../../components/MacWindow';
 
 export default function SoulTablePage() {
   return (
@@ -9,6 +10,8 @@ export default function SoulTablePage() {
       >
         ← Back to Projects
       </Link>
+
+      <MacWindow title="Safari — The Soul Table Web Architecture & PM Governance">
 
       {/* HEADER */}
       <header className="border-b border-slate-800/80 pb-8">
@@ -118,6 +121,7 @@ export default function SoulTablePage() {
           </p>
         </section>
       </div>
+   </MacWindow>
     </main>
   );
 }

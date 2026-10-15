@@ -1,181 +1,145 @@
 import Link from 'next/link';
-import SkillIcons from './components/SkillIcons';
-
-const OUTCOMES = [
-  {
-    number: '01',
-    title: 'Less Manual Work',
-    description:
-      'Automate repetitive tasks so teams can stop wasting time on manual work that should already be handled.',
-  },
-  {
-    number: '02',
-    title: 'Smoother Operations',
-    description:
-      'Clean up messy workflows, unclear handoffs, and scattered processes that slow execution down.',
-  },
-  {
-    number: '03',
-    title: 'Better System Visibility',
-    description:
-      'Connect tools, data, and updates so teams can see what’s happening without constantly chasing people down.',
-  },
-  {
-    number: '04',
-    title: 'Cleaner Communication',
-    description:
-      'Build structure around updates, stakeholder info, and project status so nothing gets lost in translation.',
-  },
-  {
-    number: '05',
-    title: 'Scalable Systems',
-    description:
-      'Create operational workflows that grow with the project instead of breaking down when the workload increases.',
-  },
-  {
-    number: '06',
-    title: 'Clearer Direction',
-    description:
-      'Turn vague ideas, complex problems, and messy goals into practical next steps people can actually execute.',
-  },
-];
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-16 lg:py-24 space-y-20">
-      {/* HERO SECTION */}
-      <section className="space-y-8 border-b border-slate-800/60 pb-16">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Open to PM & Operations Roles
+    <main className="mx-auto max-w-6xl px-4 py-8 lg:py-12">
+      {/* 3-COLUMN BENTO GRID HERO */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+        
+        {/* CARD 1: BIO & HERO (Spans 6 cols on desktop) */}
+        <div className="md:col-span-6 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-8 flex flex-col justify-between shadow-xl backdrop-blur-md">
+          <div className="space-y-6">
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-100">
+              <span className="font-bold text-white">Tanza Taylor</span> is an Operations Lead &amp; Systems Architect in <span className="font-semibold text-white">Atlanta</span>.
+            </h1>
+
+            <div className="space-y-4 text-base text-slate-300 leading-relaxed font-light">
+              <p>
+                I build structure out of chaos so teams can move faster. Driven by curiosity and a hands-on mindset, I design practical workflows, manage end-to-end projects, and deliver clean results.
+              </p>
+              <p className="text-sm text-slate-400">
+                At the intersection of people, process, and technology—focusing on eliminating operational bottlenecks and turning complex goals into clear execution.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-slate-800/60 mt-8">
+            <Link
+              href="/projects"
+              className="rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-slate-900 transition hover:bg-slate-200"
+            >
+              Explore Projects →
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-xl border border-slate-700/80 bg-slate-950/60 px-5 py-2.5 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
+            >
+              Let&apos;s Connect
+            </Link>
+          </div>
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-6xl text-slate-100 font-semibold tracking-tight leading-[1.1]">
-          Tanza Taylor
-        </h1>
-        <p className="text-lg sm:text-xl text-slate-400 font-normal tracking-wide">
-          Operations Strategy · Project Management · Digital Systems
-        </p>
-
-        <div className="max-w-2xl space-y-4">
-          <p className="font-serif text-2xl sm:text-3xl text-slate-200 font-normal leading-snug">
-            I build structure out of chaos so teams can move faster.
-          </p>
-          <p className="text-base text-slate-400 leading-relaxed font-light">
-            Driven by curiosity and a hands-on mindset, I design practical workflows, manage end-to-end projects, and deliver clean results.
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4 pt-2">
-          <Link
-            href="/projects"
-            className="rounded-xl bg-slate-100 px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-white hover:shadow-lg"
-          >
-            Explore Projects →
-          </Link>
-          <Link
-            href="/contact"
-            className="rounded-xl border border-slate-700/80 bg-slate-900/60 px-6 py-3 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:text-white"
-          >
-            Let&apos;s Connect
-          </Link>
-        </div>
-      </section>
-
-      {/* MEET TANZA & BIO / PHOTO */}
-      <section className="grid gap-12 lg:grid-cols-12 items-start border-b border-slate-800/80 pb-16">
-        <div className="lg:col-span-5">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-t-[100px] rounded-b-2xl border border-slate-800 bg-slate-900/60 shadow-2xl flex flex-col items-center justify-center p-6 text-center">
-            <div className="h-16 w-16 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-400 mb-4 font-serif text-xl">
+        {/* CARD 2: PHOTO WIDGET (Spans 3 cols on desktop) */}
+        <div className="md:col-span-3 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-xl">
+          <div className="relative aspect-[4/5] w-full rounded-2xl border border-slate-800 bg-slate-950/60 flex flex-col items-center justify-center text-center p-6">
+            <div className="h-16 w-16 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-300 font-serif text-2xl mb-3 shadow-inner">
               TT
             </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
+            <span className="text-xs font-mono uppercase tracking-widest text-slate-400 font-medium">
               Tanza Taylor
             </span>
-            <p className="mt-2 text-xs text-slate-400 max-w-[200px]">
-              Profile Photo Anchor
-            </p>
+            <span className="text-[11px] text-slate-500 mt-1">
+              Photo Anchor
+            </span>
           </div>
         </div>
 
-        <div className="lg:col-span-7 space-y-6">
-          <span className="text-xs uppercase tracking-[0.2em] text-emerald-400 font-medium">
-            Profile Snapshot
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-slate-100 font-medium">
-            At the intersection of people, process, and technology.
-          </h2>
-
-          <div className="grid grid-cols-2 gap-4 rounded-xl border border-slate-800/80 bg-slate-900/30 p-5 text-xs">
-            <div>
-              <span className="text-slate-400 block uppercase tracking-wider text-[10px]">Location</span>
-              <span className="text-slate-200 font-medium mt-1 block">Atlanta, GA (Remote-Friendly)</span>
+        {/* CARD 3: CALENDAR & AVAILABILITY WIDGET (Spans 3 cols on desktop) */}
+        <div className="md:col-span-3 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 flex flex-col justify-between shadow-xl">
+          <div>
+            <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+              <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Status</span>
+              <span className="text-xs font-mono text-emerald-400">Live</span>
             </div>
-            <div>
-              <span className="text-slate-400 block uppercase tracking-wider text-[10px]">Focus</span>
-              <span className="text-slate-200 font-medium mt-1 block">PM · Operations · Digital Systems</span>
+
+            <div className="mt-4">
+              <div className="text-3xl font-bold font-mono text-slate-100">2026</div>
+              <p className="text-xs text-slate-400 mt-1">Available for Q4 &amp; 2027 Roles</p>
             </div>
-          </div>
 
-          <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-            <p>
-              I take messy ideas and build clear, structured systems that teams can execute without the friction.
-            </p>
-            <p>
-              Whether structuring full scope baselines, coordinating technical deliverables, or streamlining cross-team handoffs, my focus stays on eliminating roadblocks and delivering tangible impact.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SKILLS BANK */}
-      <section className="space-y-6 border-b border-slate-800/80 pb-16">
-        <div>
-          <span className="text-xs uppercase tracking-[0.2em] text-emerald-400 font-medium">
-            Capabilities
-          </span>
-          <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-slate-100 font-medium">
-            Skills & Tools
-          </h2>
-        </div>
-        <SkillIcons />
-      </section>
-
-      {/* WHAT I BRING / OUTCOMES */}
-      <section className="space-y-10 pb-8">
-        <div>
-          <span className="text-xs uppercase tracking-[0.2em] text-emerald-400 font-medium">
-            Measurable Value
-          </span>
-          <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-slate-100 font-medium">
-            What I Bring to a Team
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-slate-400 font-light">
-            My work is built to reduce chaos, improve execution, and help teams move with clarity.
-          </p>
-        </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {OUTCOMES.map((outcome) => (
-            <div
-              key={outcome.title}
-              className="flex flex-col justify-between rounded-xl border border-slate-800/80 bg-slate-900/30 p-6 transition duration-150 hover:border-slate-700"
-            >
-              <div>
-                <span className="text-xs font-mono text-emerald-400">
-                  {outcome.number}
-                </span>
-                <h3 className="mt-3 font-serif text-lg text-slate-100 font-medium">
-                  {outcome.title}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed font-light">
-                  {outcome.description}
-                </p>
+            <div className="mt-6 space-y-2 text-xs">
+              <div className="flex justify-between text-slate-400 border-b border-slate-800/40 pb-1.5">
+                <span>Focus</span>
+                <span className="text-slate-200 font-medium">PM &amp; Ops</span>
+              </div>
+              <div className="flex justify-between text-slate-400 border-b border-slate-800/40 pb-1.5">
+                <span>Location</span>
+                <span className="text-slate-200 font-medium">Atlanta / Remote</span>
+              </div>
+              <div className="flex justify-between text-slate-400">
+                <span>Notice</span>
+                <span className="text-slate-200 font-medium">Immediate</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-center">
+            <span className="flex items-center justify-center gap-2 text-xs font-medium text-emerald-400">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              Open for Opportunities
+            </span>
+          </div>
         </div>
-      </section>
+
+      </div>
+
+      {/* ROW 2: NOTION/APP CARDS & SYSTEM MODULES */}
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-12 gap-5">
+        
+        {/* WIDGET: CORE DOMAINS (Spans 6 cols) */}
+        <div className="md:col-span-6 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 shadow-xl">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Operating System</span>
+            <span className="text-xs text-slate-500">v3.1</span>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 text-center">
+              <div className="text-lg mb-1">📐</div>
+              <h3 className="text-xs font-semibold text-slate-200">Structure</h3>
+              <p className="text-[11px] text-slate-500 mt-1">WBS &amp; Scope</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 text-center">
+              <div className="text-lg mb-1">⚡</div>
+              <h3 className="text-xs font-semibold text-slate-200">Execution</h3>
+              <p className="text-[11px] text-slate-500 mt-1">Zero Bottlenecks</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 text-center">
+              <div className="text-lg mb-1">⚙️</div>
+              <h3 className="text-xs font-semibold text-slate-200">Systems</h3>
+              <p className="text-[11px] text-slate-500 mt-1">Scalable SOPs</p>
+            </div>
+          </div>
+        </div>
+
+        {/* WIDGET: RECENT DELIVERABLES (Spans 6 cols) */}
+        <div className="md:col-span-6 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 shadow-xl flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Active Modules</span>
+            <Link href="/projects" className="text-xs text-slate-400 hover:text-white transition">View All →</Link>
+          </div>
+          <div className="space-y-2 text-xs">
+            <Link href="/projects/treat-truck" className="flex items-center justify-between rounded-xl border border-slate-800/60 bg-slate-950/40 p-3 hover:border-slate-700 transition">
+              <span className="text-slate-200 font-medium">Lilac Treat Truck</span>
+              <span className="text-slate-500 font-mono text-[11px]">WBS &amp; Financial Model</span>
+            </Link>
+            <Link href="/projects/auracare-lite" className="flex items-center justify-between rounded-xl border border-slate-800/60 bg-slate-950/40 p-3 hover:border-slate-700 transition">
+              <span className="text-slate-200 font-medium">AuraCare Lite</span>
+              <span className="text-slate-500 font-mono text-[11px]">Digital Safety Architecture</span>
+            </Link>
+          </div>
+        </div>
+
+      </div>
     </main>
   );
 }

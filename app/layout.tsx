@@ -71,6 +71,22 @@ const [currentHash, setCurrentHash] = useState('');
   return (
     <html lang="en" className="scroll-smooth bg-[#0b0f17]">
       <body className="min-h-screen bg-[#0b0f17] text-slate-200 antialiased selection:bg-slate-700 selection:text-white">
+
+        {/* DYNAMIC ISLAND STATUS BAR */}
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden lg:block">
+          <div className="group flex items-center gap-3 rounded-full border border-slate-800/90 bg-slate-950/80 px-4 py-1.5 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:px-5">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="font-mono text-xs text-slate-300">
+              Open to PM &amp; Operations Roles
+            </span>
+            <span className="hidden font-mono text-[11px] text-slate-500 group-hover:inline transition-opacity duration-200">
+              · Atlanta, GA
+            </span>
+          </div>
+        </div>
         
         {/* DESKTOP FLOATING SQUIRCLE DOCK */}
         <nav
