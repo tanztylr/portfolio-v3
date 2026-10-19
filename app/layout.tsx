@@ -60,29 +60,47 @@ function NavIcon({ name, className }: { name: string; className?: string }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-const [currentHash, setCurrentHash] = useState('');
+  const [currentHash, setCurrentHash] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const updateHash = () => setCurrentHash(window.location.hash);
     updateHash();
     window.addEventListener('hashchange', updateHash);
-    return () => window.removeEventListener('hashchange', updateHash);
+
+    const handleScroll = () => {
+      // Fade out cleanly once scrolled past 40px
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('hashchange', updateHash);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
   return (
     <html lang="en" className="scroll-smooth bg-[#0b0f17]">
       <body className="min-h-screen bg-[#0b0f17] text-slate-200 antialiased selection:bg-slate-700 selection:text-white">
 
-        {/* DYNAMIC ISLAND STATUS BAR */}
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden lg:block">
-          <div className="group flex items-center gap-3 rounded-full border border-slate-800/90 bg-slate-950/80 px-4 py-1.5 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-slate-700 hover:px-5">
+        {/* DYNAMIC ISLAND STATUS BAR: Fades and slides up slightly on scroll */}
+        <div
+          className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden lg:block transition-all duration-300 ease-out pointer-events-none ${
+            isScrolled
+              ? 'opacity-0 -translate-y-3 pointer-events-none'
+              : 'opacity-100 translate-y-0'
+          }`}
+        >
+          <div className="group flex items-center gap-3 rounded-full border border-slate-700/80 bg-[#070b12]/95 px-4 py-1.5 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-slate-600 hover:px-5 pointer-events-auto">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <span className="font-mono text-xs text-slate-300">
+            <span className="font-mono text-xs font-medium text-slate-200">
               Open to PM &amp; Operations Roles
             </span>
-            <span className="hidden font-mono text-[11px] text-slate-500 group-hover:inline transition-opacity duration-200">
+            <span className="hidden font-mono text-[11px] text-slate-400 group-hover:inline transition-opacity duration-200">
               · Atlanta, GA
             </span>
           </div>
@@ -95,11 +113,11 @@ const [currentHash, setCurrentHash] = useState('');
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
-          item.href === '/#work'
-            ? pathname === '/' && currentHash === '#work'
-            : item.href === '/'
-            ? pathname === '/' && !currentHash
-            : pathname === item.href;
+              item.href === '/#work'
+                ? pathname === '/' && currentHash === '#work'
+                : item.href === '/'
+                ? pathname === '/' && !currentHash
+                : pathname === item.href;
 
             return (
               <div key={item.label} className="group relative flex items-center">
@@ -189,7 +207,7 @@ const [currentHash, setCurrentHash] = useState('');
         )}
 
         {/* MAIN PAGE VIEW */}
-        <div className="lg:pl-20 pt-24 pb-16 min-h-screen">
+        <div className="lg:pl-20 pt-20 pb-16 min-h-screen">
           {children}
         </div>
 
