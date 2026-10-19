@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
         
         {/* HERO INTRO CARD */}
-        <div className="md:col-span-9 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+        <div className="md:col-span-8 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-6 sm:p-8 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -44,15 +44,20 @@ export default function HomePage() {
         </div>
 
         {/* PHOTO WIDGET */}
-        <div className="group md:col-span-3 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-4 flex flex-col items-center justify-center relative overflow-hidden shadow-xl transition-all duration-300 hover:border-slate-700">
-          <div className="relative aspect-[4/5] w-full rounded-2xl border border-slate-800/90 bg-slate-950/80 flex flex-col items-center justify-center text-center p-6 transition-transform duration-300 group-hover:scale-[1.02]">
-            <div className="h-16 w-16 rounded-full border border-slate-700 bg-slate-800/80 flex items-center justify-center text-slate-200 font-serif text-2xl mb-3 shadow-inner">
-              TT
-            </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-slate-300 font-medium">
+        <div className="group md:col-span-4 rounded-3xl border border-slate-800/80 bg-slate-900/40 p-4 flex flex-col items-center justify-between relative overflow-hidden shadow-xl transition-all duration-300 hover:border-slate-700">
+          <div className="relative aspect-[4/5] w-full rounded-2xl border border-slate-800/90 overflow-hidden bg-slate-950/80 shadow-inner">
+            <img
+              src="/tanza.jpg"
+              alt="Tanza Taylor"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <div className="w-full flex items-center justify-between pt-3 px-1 text-slate-300">
+            <span className="text-xs font-mono uppercase tracking-wider font-semibold">
               Tanza Taylor
             </span>
-            <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-900/90 px-2.5 py-0.5 text-[10px] font-mono text-slate-400">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-800 bg-slate-950/90 px-2.5 py-0.5 text-[10px] font-mono text-slate-400">
               Atlanta, GA
             </span>
           </div>
@@ -64,7 +69,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="rounded-2xl border border-slate-800/80 bg-slate-900/30 p-5 space-y-2">
           <div className="text-amber-400 font-mono text-xs font-semibold">01 / STRUCTURE</div>
-          <h3 className="text-sm font-semibold text-slate-100">Scope &amp; Governance</h3>
+          <h2 className="text-sm font-semibold text-slate-100">Scope &amp; Governance</h2>
           <p className="text-xs text-slate-400 font-light leading-relaxed">
             Deconstructing ambiguous mandates into Work Breakdown Structures, clear scope boundaries, and risk registers.
           </p>
@@ -72,7 +77,7 @@ export default function HomePage() {
 
         <div className="rounded-2xl border border-slate-800/80 bg-slate-900/30 p-5 space-y-2">
           <div className="text-emerald-400 font-mono text-xs font-semibold">02 / EXECUTION</div>
-          <h3 className="text-sm font-semibold text-slate-100">Schedule &amp; Critical Path</h3>
+          <h2 className="text-sm font-semibold text-slate-100">Schedule &amp; Critical Path</h2>
           <p className="text-xs text-slate-400 font-light leading-relaxed">
             Managing dependencies, vendor milestones, and cross-functional teams to eliminate bottlenecks and guarantee delivery.
           </p>
@@ -80,7 +85,7 @@ export default function HomePage() {
 
         <div className="rounded-2xl border border-slate-800/80 bg-slate-900/30 p-5 space-y-2">
           <div className="text-sky-400 font-mono text-xs font-semibold">03 / SYSTEMS</div>
-          <h3 className="text-sm font-semibold text-slate-100">Process &amp; Automation</h3>
+          <h2 className="text-sm font-semibold text-slate-100">Process &amp; Automation</h2>
           <p className="text-xs text-slate-400 font-light leading-relaxed">
             Connecting tools and operational SOPs to eliminate manual busywork and give leadership transparent reporting.
           </p>
@@ -109,9 +114,9 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <span className="text-lg">🚚</span>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-200 group-hover:text-emerald-300 transition">
+                  <h3 className="text-xs font-medium text-slate-200 group-hover:text-emerald-300 transition">
                     Lilac Treat Truck
-                  </h4>
+                  </h3>
                   <p className="text-[10px] text-slate-500 font-light">35-page WBS &amp; unit margin governance</p>
                 </div>
               </div>
@@ -125,9 +130,9 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <span className="text-lg">🛡️</span>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-200 group-hover:text-cyan-300 transition">
+                  <h3 className="text-xs font-medium text-slate-200 group-hover:text-cyan-300 transition">
                     AuraCare Lite
-                  </h4>
+                  </h3>
                   <p className="text-[10px] text-slate-500 font-light">Zero-friction medical emergency alert UI</p>
                 </div>
               </div>
@@ -141,9 +146,9 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <span className="text-lg">🍽️</span>
                 <div>
-                  <h4 className="text-xs font-medium text-slate-200 group-hover:text-amber-300 transition">
+                  <h3 className="text-xs font-medium text-slate-200 group-hover:text-amber-300 transition">
                     The Soul Table
-                  </h4>
+                  </h3>
                   <p className="text-[10px] text-slate-500 font-light">10-section web architecture &amp; QA checklist</p>
                 </div>
               </div>
