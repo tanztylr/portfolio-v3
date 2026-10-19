@@ -1,212 +1,256 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import MacWindow from '../components/MacWindow';
 
-interface ExperiencePass {
+interface PassRole {
   id: string;
+  company: string;
   role: string;
-  organization: string;
-  dates: string;
+  period: string;
   location: string;
-  category: string;
-  gradient: string;
+  badge: string;
   badgeColor: string;
-  broken: string;
-  did: string;
-  changed: string;
+  gradient: string;
+  borderAccent: string;
+  dotColor: string;
+  passId: string;
+  whatWasBroken: string;
+  whatIDid: string;
+  whatChanged: string;
 }
 
-const PASSES: ExperiencePass[] = [
+const CAREER_PASSES: PassRole[] = [
   {
-    id: 'cb',
+    id: 'tech-teens',
+    company: 'Tech Teens Inc.',
+    role: 'Operations & Technical Program Lead',
+    period: 'Dec 2025 · Oct 2026',
+    location: 'Atlanta, GA (Hybrid)',
+    badge: 'OPERATIONS & LEADERSHIP',
+    badgeColor: 'border-sky-400/50 bg-sky-500/10 text-sky-300',
+    gradient: 'from-sky-950/80 via-slate-900/90 to-slate-950',
+    borderAccent: 'border-sky-500/50 hover:border-sky-400',
+    dotColor: 'bg-sky-400',
+    passId: 'PASS ID: TT-2026-LEAD',
+    whatWasBroken:
+      'Youth technical programs lacked standardized curriculum pacing, clear volunteer onboarding, and structured project milestones, creating inconsistent student engagement.',
+    whatIDid:
+      'Restructured weekly session roadmaps, built digital resource libraries for volunteers, and managed delivery timelines across cross-functional student technical initiatives.',
+    whatChanged:
+      'Delivered structured program completion rates, improved volunteer onboarding clarity, and established repeatable execution playbooks for technical workshops.',
+  },
+  {
+    id: 'cracker-barrel',
+    company: 'Cracker Barrel',
     role: 'Operations Assistant Manager',
-    organization: 'Cracker Barrel',
-    dates: 'Sept 2022 – Feb 2025',
+    period: 'Sept 2022 · Feb 2025',
     location: 'Lithia Springs, GA',
-    category: 'Operations & Labor',
-    gradient: 'from-amber-950/70 via-slate-900 to-slate-950',
-    badgeColor: 'border-amber-500/40 text-amber-300 bg-amber-500/10',
-    broken:
-      'High-volume daily operations suffered from peak-hour bottlenecks, scheduling conflicts, and inconsistent team communication.',
-    did: 'Redesigned shift rotation schedules, standardized daily shift handoffs, and coached staff through clear, structured training workflows.',
-    changed:
-      'Reduced recurring operational delays by 24% while keeping daily floor execution smooth across multi-department teams.',
+    badge: 'OPERATIONS & LABOR',
+    badgeColor: 'border-amber-400/50 bg-amber-500/10 text-amber-300',
+    gradient: 'from-amber-950/80 via-slate-900/90 to-slate-950',
+    borderAccent: 'border-amber-500/50 hover:border-amber-400',
+    dotColor: 'bg-amber-400',
+    passId: 'PASS ID: CB-2026-AUTH',
+    whatWasBroken:
+      'High-volume daily operations suffered from peak-hour floor bottlenecks, shift coverage gaps, and inconsistent cross-department communication.',
+    whatIDid:
+      'Redesigned shift rotation schedules, standardized opening and closing handoffs, and coached floor personnel through structured execution checklists.',
+    whatChanged:
+      'Reduced recurring operational delays by 24% while maintaining seamless daily floor execution across multi-department teams.',
   },
   {
-    id: 'as',
+    id: 'assurant',
+    company: 'Assurant',
     role: 'Claims Associate',
-    organization: 'Assurant',
-    dates: 'Apr 2021 – Apr 2022',
+    period: 'Apr 2021 · Apr 2022',
     location: 'Kennesaw, GA',
-    category: 'Systems Rollout',
-    gradient: 'from-blue-950/70 via-slate-900 to-slate-950',
-    badgeColor: 'border-blue-500/40 text-blue-300 bg-blue-500/10',
-    broken:
-      'HR and internal initiative tracking lacked central visibility, leading to delayed project deadlines and operational rework.',
-    did: 'Built a structured tracking dashboard for team projects, coordinated HRIS technology rollout milestones, and delivered system onboarding for new hires.',
-    changed:
-      'Standardized leadership progress updates, cut down operational rework, and improved new-hire software adoption rates.',
+    badge: 'SYSTEMS ROLLOUT',
+    badgeColor: 'border-blue-500/50 bg-blue-600/10 text-blue-300',
+    gradient: 'from-blue-950/90 via-slate-900/90 to-slate-950',
+    borderAccent: 'border-blue-500/50 hover:border-blue-400',
+    dotColor: 'bg-blue-400',
+    passId: 'PASS ID: AS-2026-AUTH',
+    whatWasBroken:
+      'Internal claims tracking lacked centralized milestone visibility, leading to delayed escalations and repetitive manual inquiries.',
+    whatIDid:
+      'Maintained structured tracking queues, monitored claim status lifecycles, and assisted team members with system adoption during software workflow transitions.',
+    whatChanged:
+      'Standardized leadership progress updates, cut down operational rework, and improved software adoption consistency.',
   },
   {
-    id: 'td',
+    id: 'thousand-degrees',
+    company: '1000 Degrees Pizza',
     role: 'Operations Manager / Project Coordinator',
-    organization: '1000 Degrees',
-    dates: 'Mar 2019 – Mar 2021',
+    period: 'Mar 2019 · Mar 2021',
     location: 'Kennesaw, GA',
-    category: 'Compliance & Scheduling',
-    gradient: 'from-purple-950/70 via-slate-900 to-slate-950',
-    badgeColor: 'border-purple-500/40 text-purple-300 bg-purple-500/10',
-    broken:
-      'Labor scheduling inefficiencies led to improper shift coverage, compliance risks, and slow onboarding for new team members.',
-    did: 'Overhauled labor rotation schedules, reorganized onboarding documentation, and managed recurring payroll and compliance deadlines.',
-    changed:
-      'Balanced shift coverage, reduced early-stage operational errors from new hires, and kept core business workflows running on schedule.',
+    badge: 'COMPLIANCE & SCHEDULING',
+    badgeColor: 'border-red-500/50 bg-red-600/10 text-red-300',
+    gradient: 'from-red-950/80 via-slate-900/90 to-slate-950',
+    borderAccent: 'border-red-500/50 hover:border-red-400',
+    dotColor: 'bg-red-400',
+    passId: 'PASS ID: TD-2026-AUTH',
+    whatWasBroken:
+      'Labor scheduling inefficiencies led to improper shift coverage, compliance bottlenecks, and slow onboarding for new team members.',
+    whatIDid:
+      'Overhauled labor rotation schedules, reorganized training documentation, and audited weekly compliance milestones and inventory logs.',
+    whatChanged:
+      'Balanced shift coverage, reduced onboarding errors, and kept core business workflows running smoothly on schedule.',
   },
   {
-    id: 'pf',
+    id: 'planet-fitness',
+    company: 'Planet Fitness',
     role: 'Team Lead',
-    organization: 'Planet Fitness',
-    dates: 'Aug 2017 – Aug 2019',
+    period: 'Aug 2017 · Aug 2019',
     location: 'Mableton, GA',
-    category: 'Shift Execution',
-    gradient: 'from-emerald-950/70 via-slate-900 to-slate-950',
-    badgeColor: 'border-emerald-500/40 text-emerald-300 bg-emerald-500/10',
-    broken:
-      'Communication gaps during shift changes created inconsistent facility operations and member tracking issues.',
-    did: 'Led daily shift syncs, trained staff on member-tracking systems, and maintained strict operational and safety compliance.',
-    changed:
-      'Improved shift communication, ensured consistent service delivery, and maintained high performance evaluation ratings.',
+    badge: 'SHIFT EXECUTION',
+    badgeColor: 'border-purple-400/50 bg-purple-600/15 text-purple-300',
+    gradient: 'from-purple-950/90 via-slate-900/90 to-slate-950',
+    borderAccent: 'border-purple-500/50 hover:border-purple-400',
+    dotColor: 'bg-purple-400',
+    passId: 'PASS ID: PF-2026-AUTH',
+    whatWasBroken:
+      'Communication gaps during shift handoffs created inconsistent facility upkeep and member account tracking delays.',
+    whatIDid:
+      'Led daily shift syncs, trained front-desk staff on account systems, and maintained strict operational compliance and safety standards.',
+    whatChanged:
+      'Improved shift communication consistency, kept operations aligned, and maintained high performance evaluation ratings.',
   },
 ];
 
 export default function ExperiencePage() {
-  const [activePassId, setActivePassId] = useState<string | null>('cb');
+  // Set to 'tech-teens' so the top pass is fully expanded by default
+  const [activePassId, setActivePassId] = useState<string>('tech-teens');
+
+  const togglePass = (id: string) => {
+    setActivePassId((prev) => (prev === id ? '' : id));
+  };
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-8 lg:py-12">
-      <MacWindow title="Wallet">
-        <div className="p-2 sm:p-4 space-y-6">
+    <main className="mx-auto max-w-5xl px-4 sm:px-6 py-4 sm:py-8">
+      <MacWindow title="Wallet — Career Passes">
+        <div className="p-5 sm:p-8 space-y-6">
           
-          {/* WALLET TOP APP BAR */}
-          <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">💳</span>
+          {/* TOP WALLET ACTION BAR */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">💳</span>
               <div>
-                <h1 className="text-sm font-semibold text-slate-100">Career Passes</h1>
-                <p className="text-[11px] text-slate-400 font-light">
-                  {activePassId ? 'Tap card to minimize' : 'Select a pass to inspect breakdown'}
+                <h1 className="text-base sm:text-lg font-bold text-slate-100 tracking-tight">
+                  Career Passes
+                </h1>
+                <p className="text-xs font-mono text-slate-400 mt-0.5">
+                  Select any card to inspect operational deliverables
                 </p>
               </div>
             </div>
 
             <a
-              href="/resume.pdf"
-              download="Tanza_Taylor_Resume.pdf"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-900/90 px-3.5 py-1 text-xs font-mono text-slate-200 transition hover:border-slate-500 hover:text-white"
+              href="/Tanza_Taylor_Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/90 px-3.5 py-2 text-xs font-mono text-slate-200 transition hover:border-slate-500 hover:text-white shadow-md self-start sm:self-auto cursor-pointer"
             >
-              <span>Export Pass</span>
-              <span className="text-emerald-400">↓</span>
+              <span>Export Pass (PDF)</span>
+              <span>↓</span>
             </a>
           </div>
 
-          {/* NATIVE OVERLAPPING WALLET PASS STACK */}
-          <div className="relative pt-4 pb-24">
-            {PASSES.map((pass, index) => {
-              const isSelected = activePassId === pass.id;
-              
+          {/* WALLET PASSES ACCORDION STACK */}
+          <div className="flex flex-col space-y-3 pt-1">
+            {CAREER_PASSES.map((pass) => {
+              const isOpen = activePassId === pass.id;
+
               return (
                 <div
                   key={pass.id}
-                  onClick={() => setActivePassId(isSelected ? null : pass.id)}
-                  style={{
-                    // Stacked offset: cards naturally peek out from underneath each other
-                    marginTop: index === 0 ? 0 : isSelected ? '16px' : '-70px',
-                    zIndex: isSelected ? 40 : index + 10,
-                  }}
-                  className={`group relative rounded-3xl border transition-all duration-500 ease-out cursor-pointer overflow-hidden shadow-2xl bg-gradient-to-b ${pass.gradient} ${
-                    isSelected
-                      ? 'border-slate-500 ring-1 ring-white/20 translate-y-[-6px]'
-                      : 'border-slate-800/90 hover:border-slate-600 hover:translate-y-[-10px]'
+                  onClick={() => togglePass(pass.id)}
+                  className={`rounded-2xl border bg-gradient-to-br ${pass.gradient} ${pass.borderAccent} transition-all duration-300 shadow-2xl cursor-pointer overflow-hidden ${
+                    isOpen ? 'ring-1 ring-white/10' : 'opacity-85 hover:opacity-100 hover:translate-y-[-2px]'
                   }`}
                 >
-                  {/* PASS TOP HEADER STRIP */}
-                  <div className="p-5 sm:p-6 flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider ${pass.badgeColor}`}>
-                          {pass.category}
+                  {/* PASS CARD HEADER */}
+                  <div className="p-5 sm:p-6 flex items-start justify-between gap-4">
+                    <div className="space-y-1.5">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-0.5 text-[10px] font-mono tracking-wider font-semibold uppercase ${pass.badgeColor}`}>
+                          <span className={`h-1.5 w-1.5 rounded-full ${pass.dotColor}`} />
+                          {pass.badge}
                         </span>
-                        <span className="text-[11px] font-mono text-slate-400">
-                          {pass.dates}
+                        <span className="text-xs font-mono text-slate-400">
+                          {pass.period}
                         </span>
                       </div>
                       
-                      <h2 className="mt-2 text-lg sm:text-xl font-semibold text-white tracking-tight">
-                        {pass.organization}
+                      <h2 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight pt-0.5">
+                        {pass.company}
                       </h2>
-                      <p className="text-xs text-slate-300 font-light mt-0.5">
-                        {pass.role} · <span className="text-slate-400">{pass.location}</span>
+                      <p className="text-xs sm:text-sm text-slate-300 font-medium">
+                        {pass.role} · <span className="text-slate-400 font-light">{pass.location}</span>
                       </p>
                     </div>
 
-                    {/* NFC / CONTACTLESS PASS ICON */}
-                    <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center shrink-0">
-                      <svg className="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0" />
+                    {/* NFC SIGNAL ICON */}
+                    <div className="shrink-0 text-slate-400 pt-1">
+                      <svg className="h-5 w-5 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
                       </svg>
                     </div>
                   </div>
 
-                  {/* EXPANDED PASS BODY (Only visible when card is active) */}
-                  {isSelected && (
-                    <div className="px-5 pb-6 sm:px-6 pt-2 space-y-4 animate-fadeIn">
+                  {/* EXPANDED PASS BODY */}
+                  {isOpen && (
+                    <div className="px-5 sm:px-6 pb-6 pt-2 space-y-3.5 border-t border-white/10">
                       
-                      {/* Perforated Pass Divider */}
-                      <div className="relative border-t border-dashed border-slate-700/80 my-2">
-                        <div className="absolute -left-7 -top-2 h-4 w-4 rounded-full bg-[#0b0f17]" />
-                        <div className="absolute -right-7 -top-2 h-4 w-4 rounded-full bg-[#0b0f17]" />
+                      <div className="rounded-xl border border-white/5 bg-black/30 p-4 space-y-1">
+                        <span className="font-mono text-[10px] tracking-wider text-rose-400 font-semibold uppercase block">
+                          What Was Broken
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                          {pass.whatWasBroken}
+                        </p>
                       </div>
 
-                      <div className="grid grid-cols-1 gap-3 pt-2">
-                        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4 space-y-1">
-                          <span className="text-[10px] font-mono uppercase text-rose-400 font-semibold block">
-                            What was broken
-                          </span>
-                          <p className="text-xs text-slate-300 font-light leading-relaxed">
-                            {pass.broken}
-                          </p>
-                        </div>
-
-                        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4 space-y-1">
-                          <span className="text-[10px] font-mono uppercase text-sky-400 font-semibold block">
-                            What I did
-                          </span>
-                          <p className="text-xs text-slate-300 font-light leading-relaxed">
-                            {pass.did}
-                          </p>
-                        </div>
-
-                        <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4 space-y-1">
-                          <span className="text-[10px] font-mono uppercase text-emerald-400 font-semibold block">
-                            What changed
-                          </span>
-                          <p className="text-xs text-slate-300 font-light leading-relaxed">
-                            {pass.changed}
-                          </p>
-                        </div>
+                      <div className="rounded-xl border border-white/5 bg-black/30 p-4 space-y-1">
+                        <span className="font-mono text-[10px] tracking-wider text-sky-400 font-semibold uppercase block">
+                          What I Did
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                          {pass.whatIDid}
+                        </p>
                       </div>
 
-                      {/* Barcode Pass Footer */}
-                      <div className="pt-3 flex items-center justify-between text-[11px] font-mono text-slate-500 border-t border-slate-800/60">
-                        <span>PASS ID: {pass.id.toUpperCase()}-2026-AUTH</span>
-                        <span className="text-slate-400">Tap to fold</span>
+                      <div className="rounded-xl border border-white/5 bg-black/30 p-4 space-y-1">
+                        <span className="font-mono text-[10px] tracking-wider text-emerald-400 font-semibold uppercase block">
+                          What Changed
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                          {pass.whatChanged}
+                        </p>
                       </div>
+
+                      {/* PASS FOOTER METADATA */}
+                      <div className="flex items-center justify-between pt-1 text-[10px] font-mono text-slate-500">
+                        <span>{pass.passId}</span>
+                        <span>Tap to fold</span>
+                      </div>
+
                     </div>
                   )}
                 </div>
               );
             })}
+          </div>
+
+          {/* BOTTOM WALLET FOOTER */}
+          <div className="pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs sm:text-sm">
+            <span className="text-slate-400">Want to inspect verified project blueprints?</span>
+            <Link
+              href="/projects"
+              className="font-semibold text-amber-400 hover:text-amber-300 transition"
+            >
+              Explore Launchpad →
+            </Link>
           </div>
 
         </div>
