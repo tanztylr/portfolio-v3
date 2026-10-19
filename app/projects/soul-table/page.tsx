@@ -43,6 +43,27 @@ export default function SoulTablePage() {
 
         {/* CONTENT SECTIONS */}
         <div className="py-10 space-y-12">
+          
+          {/* VISUAL PROTOTYPE SHOWCASE */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">
+                Frontend Blueprint Rendition
+              </span>
+              <span className="text-[11px] font-mono text-slate-500">
+                Editorial Hero · Pop-Up Dining Prototype
+              </span>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl border border-slate-800/90 bg-slate-950 shadow-2xl">
+              <img
+                src="/soul-table-hero.png"
+                alt="The Soul Table Homepage Visual Prototype"
+                className="w-full h-auto object-cover object-top"
+              />
+            </div>
+          </section>
+
           {/* INTERACTIVE 10-SECTION INFORMATION ARCHITECTURE BLUEPRINT */}
           <div className="rounded-2xl border border-slate-800/80 bg-slate-950/70 p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
