@@ -55,11 +55,12 @@ export default function SoulTablePage() {
               </span>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-slate-800/90 bg-slate-950 shadow-2xl">
+            {/* FULL MOCKUP DISPLAY */}
+            <div className="w-full overflow-hidden rounded-2xl border border-slate-800/90 bg-slate-950 shadow-2xl">
               <img
-                src="/soul-table-hero.png"
+                src="/soul table home page rendition.png"
                 alt="The Soul Table Homepage Visual Prototype"
-                className="w-full h-auto object-cover object-top"
+                className="w-full h-auto block object-cover"
               />
             </div>
           </section>
