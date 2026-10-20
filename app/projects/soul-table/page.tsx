@@ -14,13 +14,39 @@ export default function SoulTablePage() {
       <MacWindow title="Safari — The Soul Table Web Architecture & PM Governance">
         {/* HEADER */}
         <header className="border-b border-slate-800/80 pb-8">
-          <span className="text-xs uppercase tracking-widest text-slate-400 font-medium">
-            Case Study 03 · Web Architecture &amp; PM Governance
-          </span>
-          <h1 className="mt-3 font-serif text-3xl sm:text-4xl text-slate-100 font-semibold tracking-tight">
-            The Soul Table
-          </h1>
-          <p className="mt-3 text-lg text-slate-400 leading-relaxed max-w-2xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-xs uppercase tracking-widest text-slate-400 font-medium">
+                Case Study 03 · Web Architecture &amp; PM Governance
+              </span>
+              <h1 className="mt-3 font-serif text-3xl sm:text-4xl text-slate-100 font-semibold tracking-tight">
+                The Soul Table
+              </h1>
+            </div>
+
+            {/* LIVE APPLICATION & REPO ACTION BUTTONS */}
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href="https://the-soul-table.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-teal-500/40 bg-teal-500/10 px-4 py-2 text-xs font-mono text-teal-300 hover:bg-teal-500/20 hover:border-teal-400 transition-all shadow-lg shadow-teal-950/40"
+              >
+                <span className="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></span>
+                Live Application ↗
+              </a>
+              <a
+                href="https://github.com/tanztylr/the-soul-table"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-xl border border-slate-700 bg-slate-800/60 px-4 py-2 text-xs font-mono text-slate-300 hover:border-slate-500 hover:text-white transition-colors"
+              >
+                GitHub Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <p className="mt-4 text-lg text-slate-400 leading-relaxed max-w-2xl">
             Digital Infrastructure Strategy, Pop-Up Booking &amp; Experience Architecture
           </p>
         </header>

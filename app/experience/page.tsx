@@ -147,8 +147,8 @@ export default function ExperiencePage() {
             </div>
 
             <a
-              href="/Tanza_Taylor_Resume.pdf"
-              download
+  href="/Tanza_Taylor_Resume.pdf"
+  download="Tanza_Taylor_Resume.pdf"
               className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/90 px-3.5 py-2 text-xs font-mono text-slate-200 transition hover:border-slate-500 hover:text-white shadow-md self-start sm:self-auto cursor-pointer"
             >
               <span>Export Pass (PDF)</span>
